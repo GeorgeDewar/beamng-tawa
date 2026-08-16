@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "mode": "batch",
+  "center": {
+    "lat": -41.17883162579788,
+    "lng": 174.82355117797854
+  },
+  "resolution": 1024,
+  "processingMetersPerPixel": 1,
+  "gridCols": 2,
+  "gridRows": 2,
+  "tileNames": [],
+  "tileOffsets": [],
+  "elevationNormalization": {
+    "enabled": false,
+    "scope": "global_batch"
+  },
+  "includeOSM": true,
+  "elevationSource": "default",
+  "gpxzApiKey": "",
+  "gpxzStatus": null,
+  "glbMeshResolution": 256,
+  "performanceProfile": "balanced",
+  "exports": {
+    "heightmap": true,
+    "satellite": true,
+    "osmTexture": false,
+    "hybridTexture": false,
+    "roadMask": false,
+    "glb": false,
+    "dae": false,
+    "ter": false,
+    "geotiff": false,
+    "geojson": false
+  },
+  "combinedLevel": true,
+  "levelOptions": {
+    "levelName": "Tawa, Wellington",
+    "baseTexture": "hybrid",
+    "pbrSource": "osm",
+    "roadType": "decal",
+    "biomeId": "italy",
+    "backdropSource": "off",
+    "includeBuildings": true,
+    "applyFoundations": true,
+    "includeTrees": true,
+    "includeRocks": false,
+    "includeWater": true,
+    "seaLevelOffset": 0
+  },
+  "gpxzApiKeyMasked": false
+}

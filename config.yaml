@@ -1,0 +1,9 @@
+area:
+  center:
+    lat: -41.17883162579788
+    lng: 174.82355117797854
+  size: # in meters
+    width: 2048
+    height: 2048
+heightmap:
+  resolution: 1.0 # meters per pixel
