@@ -6,4 +6,6 @@ area:
     width: 2048
     height: 2048
 heightmap:
-  resolution: 1.0 # meters per pixel
+  resolution: 1.00 # meters per pixel
+base_texture:
+  resolution: 0.25 # meters per pixel

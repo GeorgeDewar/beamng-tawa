@@ -14,29 +14,13 @@ import yaml
 from dotenv import load_dotenv
 from PIL import Image
 from pyproj import Transformer
+import config
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "cache" / "linz-terrain-rgb"
 OUTPUT = ROOT / "working"
 WEB_MERCATOR_WORLD = 40_075_016.68557849
 TILE_SIZE = 256
-
-
-def get_config() -> tuple[float, float, float, float, float]:
-    with (ROOT / "config.yaml").open(encoding="utf-8") as file:
-        config = yaml.safe_load(file)
-    try:
-        centre = config["area"]["center"]
-        size = config["area"]["size"]
-        return (
-            float(centre["lat"]),
-            float(centre["lng"]),
-            float(size["width"]),
-            float(size["height"]),
-            float(config["heightmap"]["resolution"]),
-        )
-    except (KeyError, TypeError, ValueError) as error:
-        raise ValueError("config.yaml must define area.center, area.size, and heightmap.resolution") from error
 
 
 def cached_tile(url: str, path: Path) -> np.ndarray:
@@ -58,7 +42,7 @@ def main() -> None:
     if not api_key:
         raise RuntimeError("Set BASEMAPS_API_KEY in .env.")
 
-    latitude, longitude, width_m, height_m, resolution = get_config()
+    latitude, longitude, width_m, height_m, resolution = config.get_config()
     if min(width_m, height_m, resolution) <= 0:
         raise ValueError("Area dimensions and heightmap resolution must be positive.")
     width, height = width_m / resolution, height_m / resolution
