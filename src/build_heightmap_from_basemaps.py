@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 from PIL import Image
 from pyproj import Transformer
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "cache" / "linz-terrain-rgb"
 OUTPUT = ROOT / "working"
 WEB_MERCATOR_WORLD = 40_075_016.68557849
@@ -54,9 +54,9 @@ def cached_tile(url: str, path: Path) -> np.ndarray:
 
 def main() -> None:
     load_dotenv(ROOT / ".env")
-    api_key = os.environ.get("LDS_API_KEY")
+    api_key = os.environ.get("BASEMAPS_API_KEY")
     if not api_key:
-        raise RuntimeError("Set LDS_API_KEY in .env.")
+        raise RuntimeError("Set BASEMAPS_API_KEY in .env.")
 
     latitude, longitude, width_m, height_m, resolution = get_config()
     if min(width_m, height_m, resolution) <= 0:
